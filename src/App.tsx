@@ -1,12 +1,13 @@
-import React, {useState} from 'react'
+import React, {Suspense, useState} from 'react'
 
 // components
-import SearchBox from './SearchBox'
-
-const CardList = React.lazy(() => import('./CardList'));
+import SearchBox from './components/SearchBox'
+import {Spinner} from "./components/Spinner";
 
 // utils
 import {robots} from './utils/db/robots'
+
+const CardList = React.lazy(() => import('./components/CardList'));
 
 const App = () => {
   const [searchText, changeSearchText] = useState('');
@@ -14,7 +15,7 @@ const App = () => {
 
   const onChangeHandler = (text: string) => {
     if (text) {
-      changeSearchText(text);
+      changeSearchText(text.toLowerCase());
       setRobotsList(
         robotsList
           .filter(
@@ -30,11 +31,15 @@ const App = () => {
     }
   };
 
-  return (<div className="tc">
-    <h1>RoboFriends</h1>
-    <SearchBox onChangeHandler={onChangeHandler}/>
-    {robotsList?.length > 0 && <CardList robots={robotsList} />}
-  </div>)
+  return (
+    <Suspense fallback={<div className="full-screen"><Spinner /></div>}>
+      <div className="tc">
+        <h1>RoboFriends</h1>
+        <SearchBox onChangeHandler={onChangeHandler}/>
+        {robotsList?.length > 0 && <CardList robots={robotsList} />}
+      </div>
+    </Suspense>
+  )
 };
 
 export default App;
