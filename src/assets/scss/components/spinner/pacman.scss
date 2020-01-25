@@ -1,0 +1,77 @@
+.pacman {
+  border-radius: 50%;
+  background: var(--spinner-color);
+  height: 50px;
+  position: relative;
+  width: 50px;
+  margin-top: 100px;
+
+  &__mouth {
+    animation: eat 0.8s infinite ease-in-out;
+    background: var(--primary-light-color);
+    clip-path: polygon(100% 90%, 50% 50%, 100% 10%);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+
+  &__food {
+    animation-name: food;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    background: var(--spinner-color);
+    border-radius: 100%;
+    height: 7px;
+    left: 100px;
+    margin: 2px;
+    position: absolute;
+    top: 52%;
+    transform: translate(0,-6px);
+    width: 7px;
+  }
+
+  &__first-food {
+    animation-delay: 0.5s;
+  }
+
+  &__second-food {
+    animation-delay: 0.75s;
+  }
+
+  &__third-food {
+    animation-delay: 1s;
+  }
+
+  &__last-food {
+    animation-delay: 1.25s;
+  }
+}
+
+@keyframes eat {
+  0% {
+    clip-path: polygon(100% 90%, 50% 50%, 100% 10%);
+  }
+  25% {
+    clip-path: polygon(100% 70%, 50% 50%, 100% 30%);
+  }
+  50% {
+    clip-path: polygon(100% 50%, 50% 50%, 100% 50%);
+  }
+  75% {
+    clip-path: polygon(100% 70%, 50% 50%, 100% 30%);
+  }
+  100% {
+    clip-path: polygon(100% 90%, 50% 50%, 100% 10%);
+  }
+}
+
+@keyframes food {
+  75% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translate(-100px,-6px);
+  }
+}

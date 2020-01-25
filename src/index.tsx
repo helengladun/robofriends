@@ -4,14 +4,15 @@ import 'tachyons';
 
 // components
 import App from './App'
+import {Spinner} from './components/Spinner';
 
 // styles
-import "./index.css";
+import "./index.scss";
 
 // utils
 import registerServiceWorker from './registerServiceWorker'
 
 ReactDOM.render(
-  <App />,
+  <Spinner />,
   document.getElementById('root'));
 registerServiceWorker();

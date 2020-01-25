@@ -1,4 +1,5 @@
 import React, {Suspense, useState} from 'react'
+import debounce from 'lodash/debounce'
 
 // components
 import SearchBox from './components/SearchBox'
@@ -35,7 +36,7 @@ const App = () => {
     <Suspense fallback={<div className="full-screen"><Spinner /></div>}>
       <div className="tc">
         <h1>RoboFriends</h1>
-        <SearchBox onChangeHandler={onChangeHandler}/>
+        <SearchBox onChangeHandler={debounce(onChangeHandler, 500)}/>
         {robotsList?.length > 0 && <CardList robots={robotsList} />}
       </div>
     </Suspense>
