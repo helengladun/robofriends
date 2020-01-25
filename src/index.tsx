@@ -4,7 +4,6 @@ import 'tachyons';
 
 // components
 import App from './App'
-import {Spinner} from './components/Spinner';
 
 // styles
 import "./index.scss";
@@ -13,6 +12,6 @@ import "./index.scss";
 import registerServiceWorker from './registerServiceWorker'
 
 ReactDOM.render(
-  <Spinner />,
+  <div className="full-screen"><App /></div>,
   document.getElementById('root'));
 registerServiceWorker();

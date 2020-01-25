@@ -29,22 +29,22 @@
     top: 52%;
     transform: translate(0,-6px);
     width: 7px;
-  }
 
-  &__first-food {
-    animation-delay: 0.5s;
-  }
+    &:first-child {
+      animation-delay: 0.5s;
+    }
 
-  &__second-food {
-    animation-delay: 0.75s;
-  }
+    &:nth-child(2) {
+      animation-delay: 0.75s;
+    }
 
-  &__third-food {
-    animation-delay: 1s;
-  }
+    &:nth-child(3) {
+      animation-delay: 1s;
+    }
 
-  &__last-food {
-    animation-delay: 1.25s;
+    &:last-child {
+      animation-delay: 1.25s;
+    }
   }
 }
 
