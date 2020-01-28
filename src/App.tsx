@@ -1,4 +1,4 @@
-import React, {Suspense, useState} from 'react'
+import React, {Suspense, useState, useEffect} from 'react'
 import debounce from 'lodash/debounce'
 
 // components
@@ -15,27 +15,29 @@ const App = () => {
   const [robotsList, setRobotsList] = useState(robots);
 
   const onChangeHandler = (text: string) => {
-    if (text) {
-      changeSearchText(text.toLowerCase());
+    changeSearchText(text);
+  };
+
+  useEffect(() => {
+    if (searchText) {
       setRobotsList(
-        robotsList
+        robots
           .filter(
-  robot =>
+            robot =>
               robot
                 .name
                 .toLowerCase()
-                .search(searchText) > -1
+                .search(searchText.toLowerCase()) > -1
           )
-        );
+      )
     } else {
       setRobotsList(robots)
-    }
-  };
+    }}, [searchText]);
 
   return (
     <Suspense fallback={<div className="full-screen"><Spinner /></div>}>
       <div className="tc">
-        <h1>RoboFriends</h1>
+        <h1 className="main-title f1">RoboFriends</h1>
         <SearchBox onChangeHandler={debounce(onChangeHandler, 500)}/>
         {robotsList?.length > 0 && <CardList robots={robotsList} />}
       </div>
