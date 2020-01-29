@@ -2,6 +2,7 @@ import React, {Suspense, useState, useEffect} from 'react'
 import debounce from 'lodash/debounce'
 
 // components
+import ErrorBoundary from "./components/ErrorBoundary";
 import SearchBox from './components/SearchBox'
 import {Spinner} from './components/Spinner';
 import Scroll from './components/Scroll'
@@ -40,7 +41,13 @@ const App = () => {
       <div className="tc">
         <h1 className="main-title f1">RoboFriends</h1>
         <SearchBox onChangeHandler={debounce(onChangeHandler, 500)}/>
-        {robotsList?.length > 0 && <Scroll><CardList robots={getRobots()} /></Scroll>}
+        {robotsList?.length > 0 &&
+          <Scroll>
+            <ErrorBoundary>
+              <CardList robots={getRobots()} />
+            </ErrorBoundary>
+          </Scroll>
+        }
       </div>
     </Suspense>
   )

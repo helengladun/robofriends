@@ -12,9 +12,7 @@ interface IProps {
 
 const CardList = ({robots}: IProps) => (
   <div>
-    {
-      robots.map(robot => <Card key={robot.id} data={robot} />)
-    }
+    {robots.map(robot => <Card key={robot.id} data={robot} />)}
   </div>
 );
 
