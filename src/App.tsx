@@ -3,7 +3,8 @@ import debounce from 'lodash/debounce'
 
 // components
 import SearchBox from './components/SearchBox'
-import {Spinner} from "./components/Spinner";
+import {Spinner} from './components/Spinner';
+import Scroll from './components/Scroll'
 
 // interfaces
 import {IRobot} from "./interfaces/IRobot";
@@ -39,7 +40,7 @@ const App = () => {
       <div className="tc">
         <h1 className="main-title f1">RoboFriends</h1>
         <SearchBox onChangeHandler={debounce(onChangeHandler, 500)}/>
-        {robotsList?.length > 0 && <CardList robots={getRobots()} />}
+        {robotsList?.length > 0 && <Scroll><CardList robots={getRobots()} /></Scroll>}
       </div>
     </Suspense>
   )
