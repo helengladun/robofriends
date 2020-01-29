@@ -37,19 +37,7 @@ const App = () => {
   ;
 
   return (
-    <Suspense fallback={<div className="full-screen"><Spinner /></div>}>
-      <div className="tc">
-        <h1 className="main-title f1">RoboFriends</h1>
-        <SearchBox onChangeHandler={debounce(onChangeHandler, 500)}/>
-        {robotsList?.length > 0 &&
-          <Scroll>
-            <ErrorBoundary>
-              <CardList robots={getRobots()} />
-            </ErrorBoundary>
-          </Scroll>
-        }
-      </div>
-    </Suspense>
+    <div className="full-screen"><Spinner /></div>
   )
 };
 

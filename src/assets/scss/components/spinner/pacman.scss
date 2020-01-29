@@ -1,6 +1,6 @@
 .pacman {
   border-radius: 50%;
-  background: var(--spinner-color);
+  background: var(--primary-spinner-color);
   height: 50px;
   position: relative;
   width: 50px;
@@ -8,7 +8,7 @@
 
   &__mouth {
     animation: eat 0.8s infinite ease-in-out;
-    background: var(--primary-light-color);
+    background: var(--primary-bg-color);
     clip-path: polygon(100% 90%, 50% 50%, 100% 10%);
     height: 100%;
     position: absolute;
@@ -20,7 +20,7 @@
     animation-iteration-count: infinite;
     animation-duration: 1s;
     animation-timing-function: linear;
-    background: var(--spinner-color);
+    background: var(--primary-spinner-color);
     border-radius: 100%;
     height: 7px;
     left: 100px;
@@ -31,19 +31,19 @@
     width: 7px;
 
     &:first-child {
-      animation-delay: 0.5s;
+      animation-delay: 0s;
     }
 
     &:nth-child(2) {
-      animation-delay: 0.75s;
+      animation-delay: .25s;
     }
 
     &:nth-child(3) {
-      animation-delay: 1s;
+      animation-delay: .5s;
     }
 
     &:last-child {
-      animation-delay: 1.25s;
+      animation-delay: .75s;
     }
   }
 }
