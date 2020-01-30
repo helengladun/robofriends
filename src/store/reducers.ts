@@ -16,7 +16,7 @@ export const searchRobots: Reducer<ISearchState> = (state: ISearchState = initia
     case SearchTypes.CHANGE_SEARCH_FIELD:
       return {
         ...state,
-        searchField: action.payload.text
+        searchField: action.payload
       };
     default:
       return state;

@@ -24,15 +24,14 @@ interface PropsFromDispatch {
   setSearchField: Function
 }
 
-interface IProps extends Partial<PropsFromState>, Partial<PropsFromDispatch>{
+interface IProps extends PropsFromState, PropsFromDispatch{
 }
 
-const App = (props: IProps) => {
-  const [searchText, changeSearchText] = useState('');
+const App = ({setSearchField, searchField}: IProps) => {
   const [robotsList, setRobotsList] = useState([]);
 
   const onChangeHandler = (text: string) => {
-    changeSearchText(text);
+    setSearchField(text);
   };
 
   useEffect(() => {
@@ -47,7 +46,7 @@ const App = (props: IProps) => {
           robot
             .name
             .toLowerCase()
-            .search(searchText.toLowerCase()) > -1
+            .search(searchField.toLowerCase()) > -1
       )
   ;
 
@@ -69,7 +68,7 @@ const App = (props: IProps) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  searchField: state.searchRobots
+  searchField: state.searchField
 });
 
 const mapDispatchToProps: PropsFromDispatch = ({
