@@ -1,5 +1,6 @@
 import React, {Suspense, useState, useEffect} from 'react'
 import debounce from 'lodash/debounce'
+import {connect} from 'react-redux'
 
 // components
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -10,9 +11,23 @@ import Scroll from './components/Scroll'
 // interfaces
 import {IRobot} from "./interfaces/IRobot";
 
+// actions
+import {setSearchField} from "./store/actions";
+
 const CardList = React.lazy(() => import('./components/CardList'));
 
-const App = () => {
+interface PropsFromState {
+  searchField: string
+}
+
+interface PropsFromDispatch {
+  setSearchField: Function
+}
+
+interface IProps extends Partial<PropsFromState>, Partial<PropsFromDispatch>{
+}
+
+const App = (props: IProps) => {
   const [searchText, changeSearchText] = useState('');
   const [robotsList, setRobotsList] = useState([]);
 
@@ -53,4 +68,12 @@ const App = () => {
   )
 };
 
-export default App;
+const mapStateToProps = (state: any) => ({
+  searchField: state.searchRobots
+});
+
+const mapDispatchToProps: PropsFromDispatch = ({
+  setSearchField
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
