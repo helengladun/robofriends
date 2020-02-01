@@ -11,7 +11,7 @@ const initialState: ISearchState = {
   searchField: ''
 };
 
-export const searchRobots: Reducer<ISearchState> = (state: ISearchState = initialState, action: AnyAction) => {
+export const reducer: Reducer<ISearchState> = (state: ISearchState = initialState, action: AnyAction) => {
   switch(action.type) {
     case SearchTypes.CHANGE_SEARCH_FIELD:
       return {

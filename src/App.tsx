@@ -1,4 +1,4 @@
-import React, {Suspense, useState, useEffect} from 'react'
+import React, {Suspense, useEffect} from 'react'
 import debounce from 'lodash/debounce'
 import {connect} from 'react-redux'
 
@@ -13,66 +13,67 @@ import {IRobot} from "./interfaces/IRobot";
 
 // actions
 import {setSearchField} from "./store/actions";
+import {ApplicationState} from "./index";
+import {getRobotsPending} from "./modules/robots/store/actions";
 
 const CardList = React.lazy(() => import('./components/CardList'));
 
 interface PropsFromState {
-  searchField: string
+  searchField: string,
+  robots: IRobot[],
+  isLoading: boolean,
+  error: string
 }
 
 interface PropsFromDispatch {
-  setSearchField: Function
+  setSearchField: Function,
+  getRobotsPending: Function
 }
 
 interface IProps extends PropsFromState, PropsFromDispatch{
 }
 
-const App = ({setSearchField, searchField}: IProps) => {
-  const [robotsList, setRobotsList] = useState([]);
-
+const App = ({setSearchField, searchField, isLoading, robots, error, getRobotsPending}: IProps) => {
   const onChangeHandler = (text: string) => {
     setSearchField(text);
   };
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(users => setRobotsList(users));
+    getRobotsPending()
   }, []);
 
-  const getRobots = () => robotsList
-      .filter(
-        (robot: IRobot) =>
-          robot
-            .name
-            .toLowerCase()
-            .search(searchField.toLowerCase()) > -1
-      )
-  ;
+  const getRobots = (searchText: string) => {
+    if (searchText) return robots.filter(
+      (robot: IRobot) => robot.name.toLowerCase().search(searchText.toLowerCase()) > -1);
+    else return robots
+  };
 
-  return (
-    <Suspense fallback={<div className="full-screen"><Spinner /></div>}>
-      <div className="tc">
-        <h1 className="main-title f1">RoboFriends</h1>
-        <SearchBox onChangeHandler={debounce(onChangeHandler, 500)}/>
-        {robotsList?.length > 0 &&
-          <Scroll>
-            <ErrorBoundary>
-              <CardList robots={getRobots()} />
-            </ErrorBoundary>
-          </Scroll>
-        }
-      </div>
-    </Suspense>
-  )
+  return isLoading ? (<Spinner />) :
+  (<Suspense fallback={<Spinner />}>
+    <div className="tc">
+      <h1 className="main-title f1">RoboFriends</h1>
+      <SearchBox onChangeHandler={debounce(onChangeHandler, 500)}/>
+      {robots && robots.length > 0 &&
+        <Scroll>
+          <ErrorBoundary>
+            <CardList robots={getRobots(searchField)} />
+          </ErrorBoundary>
+        </Scroll>
+      }
+    </div>
+    </Suspense>)
 };
 
-const mapStateToProps = (state: any) => ({
-  searchField: state.searchField
+const mapStateToProps = (state: ApplicationState) => ({
+  searchField: state.search.searchField,
+  robots: state.robots.robotsList,
+  isLoading: state.robots.loading,
+  error: state.robots.error
 });
 
 const mapDispatchToProps: PropsFromDispatch = ({
-  setSearchField
+  setSearchField,
+  getRobotsPending
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
