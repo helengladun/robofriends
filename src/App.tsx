@@ -1,4 +1,4 @@
-import React, {Suspense, useCallback, useEffect} from 'react'
+import React, {Suspense, useEffect} from 'react'
 import debounce from 'lodash/debounce'
 import {useDispatch, useSelector} from 'react-redux'
 
@@ -29,14 +29,9 @@ const App = () => {
     dispatch(setSearchField(text));
   };
 
-  const fetchRobots = useCallback(
-    () => dispatch(getRobotsPending()),
-    [dispatch]
-  );
-
   useEffect(() => {
-    fetchRobots()
-  }, [fetchRobots]);
+    dispatch(getRobotsPending());
+  }, [dispatch]);
 
   const getRobots = (searchText: string) => {
     if (searchText) return robotsList.filter(
