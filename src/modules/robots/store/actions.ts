@@ -2,7 +2,7 @@
 import { RobotsTypes } from "./types";
 
 //interfaces
-import {IRobot} from "../../../interfaces/IRobot";
+import {IRobot} from "../../shared/models/IRobot";
 
 export const getRobotsPending = () => ({
   type: RobotsTypes.GET_ROBOTS_PENDING

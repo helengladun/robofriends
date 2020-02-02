@@ -4,7 +4,7 @@ import { takeEvery, call, all, put } from 'redux-saga/effects'
 import {getRobotsSuccess, getRobotsFailed} from "./actions";
 
 // services
-import {Robot} from '../services/Robot';
+import {Robot} from '../../shared/services/Robot';
 
 // types
 import {RobotsTypes} from "./types";

@@ -4,7 +4,7 @@ import React from 'react';
 import Card from "./Card";
 
 // interfaces
-import {IRobot} from '../interfaces/IRobot'
+import {IRobot} from '../../shared/models/IRobot'
 
 interface IProps {
   robots: IRobot[]

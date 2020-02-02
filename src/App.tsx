@@ -3,22 +3,24 @@ import debounce from 'lodash/debounce'
 import {useDispatch, useSelector} from 'react-redux'
 
 // components
-import ErrorBoundary from "./components/ErrorBoundary";
-import SearchBox from './components/SearchBox'
-import {Spinner} from './components/Spinner';
-import Scroll from './components/Scroll'
+import ErrorBoundary from './modules/shared/components/ErrorBoundary';
+import SearchBox from './modules/search/components/SearchBox'
+import {Spinner} from './modules/shared/components/Spinner';
+import Scroll from './modules/shared/components/Scroll'
 
 // interfaces
-import {IRobot} from "./interfaces/IRobot";
+import {IRobot} from "./modules/shared/models/IRobot";
 
 // actions
-import {setSearchField} from "./store/actions";
-import {ApplicationState} from "./index";
+import {setSearchField} from "./modules/search/store/actions";
 import {getRobotsPending} from "./modules/robots/store/actions";
-import {IRobotsState} from "./modules/robots/store/reducers";
-import {ISearchState} from "./store/reducers";
 
-const CardList = React.lazy(() => import('./components/CardList'));
+// reducers
+import {IRobotsState} from "./modules/robots/store/reducers";
+import {ISearchState} from "./modules/search/store/reducers";
+import {ApplicationState} from './store/rootReducer';
+
+const CardList = React.lazy(() => import('./modules/robots/components/CardList'));
 
 const App = () => {
   const dispatch = useDispatch();
