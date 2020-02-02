@@ -1,4 +1,4 @@
-import React, {Suspense, useEffect} from 'react'
+import React, {Suspense, useEffect, useState} from 'react'
 import debounce from 'lodash/debounce'
 import {useDispatch, useSelector} from 'react-redux'
 
@@ -13,7 +13,7 @@ import {IRobot} from "./modules/shared/models/IRobot";
 
 // actions
 import {setSearchField} from "./modules/search/store/actions";
-import {getRobotsPending} from "./modules/robots/store/actions";
+import {requestRobots} from "./modules/robots/store/actions";
 
 // reducers
 import {IRobotsState} from "./modules/robots/store/reducers";
@@ -24,22 +24,25 @@ const CardList = React.lazy(() => import('./modules/robots/components/CardList')
 
 const App = () => {
   const dispatch = useDispatch();
+
   const {robotsList, error, loading}: IRobotsState = useSelector((state: ApplicationState) => state.robots);
   const {searchField}: ISearchState = useSelector((state: ApplicationState) => state.search);
+
+  const [searchResult, setSearchResults] = useState<IRobot[]>([]);
 
   const onChangeHandler = (text: string) => {
     dispatch(setSearchField(text));
   };
 
   useEffect(() => {
-    dispatch(getRobotsPending());
+    dispatch(requestRobots());
   }, [dispatch]);
 
-  const getRobots = (searchText: string) => {
-    if (searchText) return robotsList.filter(
-      (robot: IRobot) => robot.name.toLowerCase().search(searchText.toLowerCase()) > -1);
-    else return robotsList
-  };
+  useEffect(() => {
+    const results = robotsList.filter(
+      (robot: IRobot) => robot.name.toLowerCase().search(searchField.toLowerCase()) > -1);
+    setSearchResults(results)
+  }, [searchField, robotsList]);
 
   return loading ? (<Spinner />) :
   (<Suspense fallback={<Spinner />}>
@@ -50,7 +53,7 @@ const App = () => {
       {robotsList && robotsList.length > 0 &&
         <Scroll>
           <ErrorBoundary>
-            <CardList robots={getRobots(searchField)} />
+            { searchField === '' ? <CardList robots={robotsList} /> : <CardList robots={searchResult} /> }
           </ErrorBoundary>
         </Scroll>
       }

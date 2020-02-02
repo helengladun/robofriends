@@ -4,19 +4,19 @@ import { RobotsTypes } from "./types";
 //interfaces
 import {IRobot} from "../../shared/models/IRobot";
 
-export const getRobotsPending = () => ({
-  type: RobotsTypes.GET_ROBOTS_PENDING
+export const requestRobots = () => ({
+  type: RobotsTypes.REQUEST_ROBOTS
 });
 
-export const getRobotsSuccess = (data: IRobot[]) => ({
-  type: RobotsTypes.GET_ROBOTS_SUCCESS,
+export const requestRobotsSuccess = (data: IRobot[]) => ({
+  type: RobotsTypes.REQUEST_ROBOTS_SUCCESS,
   payload: {
     data
   }
 });
 
-export const getRobotsFailed = (error: string) => ({
-  type: RobotsTypes.GET_ROBOTS_FAILED,
+export const requestRobotsFailed = (error: string) => ({
+  type: RobotsTypes.REQUEST_ROBOTS_FAILED,
   payload: {
     error
   }

@@ -20,18 +20,18 @@ const initialState: IRobotsState = {
 
 export const reducer: Reducer<IRobotsState> = (state: IRobotsState = initialState, action: AnyAction) => {
   switch(action.type) {
-    case RobotsTypes.GET_ROBOTS_PENDING:
+    case RobotsTypes.REQUEST_ROBOTS:
       return {
         ...state,
         loading: true
       };
-    case RobotsTypes.GET_ROBOTS_SUCCESS:
+    case RobotsTypes.REQUEST_ROBOTS_SUCCESS:
       return {
         ...state,
         loading: false,
         robotsList: action.payload.data
       };
-    case RobotsTypes.GET_ROBOTS_FAILED:
+    case RobotsTypes.REQUEST_ROBOTS_FAILED:
       return {
         ...state,
         loading: false,
