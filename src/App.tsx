@@ -1,4 +1,4 @@
-import React, {Suspense, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import debounce from 'lodash/debounce'
 import {useDispatch, useSelector} from 'react-redux'
 
@@ -7,6 +7,7 @@ import ErrorBoundary from './modules/shared/components/ErrorBoundary';
 import SearchBox from './modules/search/components/SearchBox'
 import {Spinner} from './modules/shared/components/Spinner';
 import Scroll from './modules/shared/components/Scroll'
+import Header from './modules/shared/components/Header'
 
 // interfaces
 import {IRobot} from "./modules/shared/models/IRobot";
@@ -19,12 +20,10 @@ import {requestRobots} from "./modules/robots/store/actions";
 import {IRobotsState} from "./modules/robots/store/reducers";
 import {ISearchState} from "./modules/search/store/reducers";
 import {ApplicationState} from './store/rootReducer';
-
-const CardList = React.lazy(() => import('./modules/robots/components/CardList'));
+import CardList from "./modules/robots/components/CardList";
 
 const App = () => {
   const dispatch = useDispatch();
-
   const {robotsList, error, loading}: IRobotsState = useSelector((state: ApplicationState) => state.robots);
   const {searchField}: ISearchState = useSelector((state: ApplicationState) => state.search);
 
@@ -44,12 +43,15 @@ const App = () => {
     setSearchResults(results)
   }, [searchField, robotsList]);
 
-  return loading ? (<Spinner />) :
-  (<Suspense fallback={<Spinner />}>
-    <div className="tc">
-      <h1 className="main-title f1">RoboFriends</h1>
+  if (loading) {
+    return <Spinner />
+  }
+
+  return (
+    <div className="tc red">
+      <Header />
       <SearchBox onChangeHandler={debounce(onChangeHandler, 500)}/>
-      {<div className="red">{error}</div>}
+      {error && <div className="red">{error}</div>}
       {robotsList && robotsList.length > 0 &&
         <Scroll>
           <ErrorBoundary>
@@ -58,7 +60,7 @@ const App = () => {
         </Scroll>
       }
     </div>
-    </Suspense>)
+  )
 };
 
 export default App;

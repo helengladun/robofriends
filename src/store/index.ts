@@ -5,13 +5,11 @@ import {ApplicationState, rootReducer} from './rootReducer';
 import {createLogger} from "redux-logger";
 import rootSaga from "../modules/robots/store/saga";
 
-
-
 export function configureStore(): Store<ApplicationState> {
   const sagaMiddleware = createSagaMiddleware();
   const logger = createLogger();
 
-  const store = createStore(rootReducer, applyMiddleware(sagaMiddleware, logger));
+  const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
   sagaMiddleware.run(rootSaga);
 

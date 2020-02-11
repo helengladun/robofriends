@@ -12,3 +12,5 @@ const Scroll = (props: React.PropsWithChildren<IProps>) => {
 };
 
 export default Scroll
+
+Scroll.whyDidYouRender = true;

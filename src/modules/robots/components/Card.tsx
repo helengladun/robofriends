@@ -18,3 +18,4 @@ const Card = ({data: {id, name, email}}: IProps) => (
 );
 
 export default React.memo(Card);
+Card.whyDidYouRender = true;

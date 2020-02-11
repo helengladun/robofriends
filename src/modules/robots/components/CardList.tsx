@@ -12,8 +12,10 @@ interface IProps {
 
 const CardList = ({robots}: IProps) => (
   <div>
+    {console.log('cardlist')}
     {robots.map(robot => <Card key={robot.id} data={robot} />)}
   </div>
 );
 
 export default CardList;
+CardList.whyDidYouRender = true;

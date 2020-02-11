@@ -11,3 +11,5 @@ export const Spinner = () => (
     </div>
   </div>
 );
+
+Spinner.whyDidYouRender = true;

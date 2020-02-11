@@ -17,6 +17,9 @@ import {configureStore} from "./store";
 
 const store = configureStore();
 
+const whyDidYouRender = require('@welldone-software/why-did-you-render');
+whyDidYouRender(React);
+
 ReactDOM.render(
   <Provider store={store}>
     <div className="full-screen">

@@ -7,4 +7,5 @@ export interface ApplicationState {
   robots: IRobotsState,
   search: ISearchState
 }
+
 export const rootReducer = combineReducers<ApplicationState>({robots: robotsReducer, search: SearchReducer});
