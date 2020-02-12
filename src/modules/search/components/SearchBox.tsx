@@ -7,6 +7,7 @@ interface IProps {
 const SearchBox = ({onChangeHandler}: IProps) => (
   <div className="pa2">
     <input
+      aria-label="search robots"
       className="pa3 ba b--green bg-lightest-blue"
       type="search"
       placeholder="search robots"

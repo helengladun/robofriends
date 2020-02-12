@@ -8,6 +8,7 @@ import SearchBox from './modules/search/components/SearchBox'
 import {Spinner} from './modules/shared/components/Spinner';
 import Scroll from './modules/shared/components/Scroll'
 import Header from './modules/shared/components/Header'
+import CardList from "./modules/robots/components/CardList";
 
 // interfaces
 import {IRobot} from "./modules/shared/models/IRobot";
@@ -20,7 +21,6 @@ import {requestRobots} from "./modules/robots/store/actions";
 import {IRobotsState} from "./modules/robots/store/reducers";
 import {ISearchState} from "./modules/search/store/reducers";
 import {ApplicationState} from './store/rootReducer';
-import CardList from "./modules/robots/components/CardList";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const App = () => {
     setSearchResults(results)
   }, [searchField, robotsList]);
 
-  if (loading) {
+  if (!robotsList?.length) {
     return <Spinner />
   }
 
