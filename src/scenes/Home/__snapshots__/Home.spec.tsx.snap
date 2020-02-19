@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component render App component correctly 1`] = `
+<div
+  className="tc"
+>
+  <Memo(Header) />
+  <SearchBox
+    onChangeHandler={[Function]}
+  />
+  <Scroll>
+    <ErrorBoundary>
+      <Memo(CardList)
+        robots={Array []}
+      />
+    </ErrorBoundary>
+  </Scroll>
+</div>
+`;

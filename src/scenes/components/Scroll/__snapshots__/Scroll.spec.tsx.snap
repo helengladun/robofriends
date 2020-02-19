@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scroll component render Scroll component correctly 1`] = `
+<div
+  className="overflow-y-scroll ba bw3 scroll"
+>
+  <div>
+    Children
+  </div>
+</div>
+`;

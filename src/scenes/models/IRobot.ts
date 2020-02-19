@@ -4,7 +4,7 @@ import {ICompany} from './ICompany';
 export interface IRobot {
   id: number;
   name: string;
-  username: string;
+  username?: string;
   email: string;
   address?: IAddress
   phone?: string,

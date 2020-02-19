@@ -4,7 +4,7 @@ import { AnyAction, Reducer } from "redux";
 import { RobotsTypes } from "./types";
 
 // interfaces
-import {IRobot} from "../../shared/models/IRobot";
+import {IRobot} from "../../models/IRobot";
 
 export interface IRobotsState {
   robotsList: IRobot[],

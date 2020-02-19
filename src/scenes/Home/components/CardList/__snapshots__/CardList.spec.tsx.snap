@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardList component render CardList component correctly 1`] = `
+<div>
+  <Memo(Card)
+    data={
+      Object {
+        "email": "user1@gmail.com",
+        "id": 1,
+        "name": "user1",
+      }
+    }
+    key="1"
+  />
+  <Memo(Card)
+    data={
+      Object {
+        "email": "user2@gmail.com",
+        "id": 2,
+        "name": "user2",
+      }
+    }
+    key="2"
+  />
+</div>
+`;

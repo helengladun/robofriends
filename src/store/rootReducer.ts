@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import {IRobotsState, reducer as robotsReducer} from "../modules/robots/store/reducers";
-import {ISearchState, reducer as SearchReducer} from "../modules/search/store/reducers";
+import {IRobotsState, reducer as robotsReducer} from "../scenes/services/robots/reducers";
+import {ISearchState, reducer as SearchReducer} from "../scenes/services/search/reducers";
 
 export interface ApplicationState {
   robots: IRobotsState,

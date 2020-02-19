@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBox component render SearchBox component correctly 1`] = `
+<div
+  className="pa2"
+>
+  <input
+    aria-label="search robots"
+    className="pa3 ba b--green bg-lightest-blue"
+    onChange={[Function]}
+    placeholder="search robots"
+    type="search"
+  />
+</div>
+`;

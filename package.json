@@ -5,7 +5,6 @@
   "private": true,
   "dependencies": {
     "@emotion/core": "^10.0.27",
-    "@types/jest": "^24.9.0",
     "@types/lodash": "^4.14.149",
     "@types/node": "^13.1.8",
     "@types/react": "^16.9.19",
@@ -27,15 +26,21 @@
     "typescript": "^3.7.5"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.10.5",
+    "@types/jest": "^24.9.0",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
     "@welldone-software/why-did-you-render": "^4.0.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "sw-precache": "^5.2.1"
   },
@@ -45,7 +50,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
@@ -55,5 +61,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  }
 }

@@ -2,7 +2,7 @@
 import { RobotsTypes } from "./types";
 
 //interfaces
-import {IRobot} from "../../shared/models/IRobot";
+import {IRobot} from "../../models/IRobot";
 
 export const requestRobots = () => ({
   type: RobotsTypes.REQUEST_ROBOTS

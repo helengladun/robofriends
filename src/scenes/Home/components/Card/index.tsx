@@ -1,7 +1,7 @@
 import React from 'react'
 
 // interfaces
-import { IRobot } from '../../shared/models/IRobot';
+import {IRobot} from '../../../models/IRobot';
 
 interface IProps {
   data: IRobot

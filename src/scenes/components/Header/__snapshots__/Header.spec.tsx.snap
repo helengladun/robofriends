@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component render Header component correctly 1`] = `
+<h1
+  className="main-title f1"
+>
+  RoboFriends
+</h1>
+`;

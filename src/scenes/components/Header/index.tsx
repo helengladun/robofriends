@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Header = () => (
-  <h1 className="main-title f1">RoboFriends {console.log('header')}</h1>
+  <h1 className="main-title f1">RoboFriends</h1>
 );
 
 export default React.memo(Header)

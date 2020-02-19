@@ -1,10 +1,10 @@
 import React from 'react';
 
 // components
-import Card from "./Card";
+import Card from "../Card/index";
 
 // interfaces
-import {IRobot} from '../../shared/models/IRobot'
+import {IRobot} from '../../../models/IRobot';
 
 interface IProps {
   robots: IRobot[]
@@ -12,10 +12,9 @@ interface IProps {
 
 const CardList = ({robots}: IProps) => (
   <div>
-    {console.log('cardlist')}
     {robots.map(robot => <Card key={robot.id} data={robot} />)}
   </div>
 );
 
-export default CardList;
+export default React.memo(CardList);
 CardList.whyDidYouRender = true;

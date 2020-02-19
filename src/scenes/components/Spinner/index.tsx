@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Spinner = () => (
+const Spinner = () => (
   <div className="full-screen flex justify-center items-center">
     <div className="pacman">
       <div className="pacman__mouth"></div>
@@ -11,5 +11,7 @@ export const Spinner = () => (
     </div>
   </div>
 );
+
+export default React.memo(Spinner)
 
 Spinner.whyDidYouRender = true;
