@@ -1,6 +1,6 @@
-import React, {useCallback, useEffect, useState} from 'react'
-import debounce from 'lodash/debounce'
-import {useDispatch, useSelector} from 'react-redux'
+import React, { useCallback, useEffect, useState } from 'react';
+import debounce from 'lodash/debounce';
+import { useDispatch, useSelector } from 'react-redux';
 
 // components
 import Spinner from '../components/Spinner';
@@ -11,26 +11,31 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import CardList from './components/CardList';
 
 // interfaces
-import {IRobot} from '../models/IRobot';
+import { IRobot } from '../models/IRobot';
 
 // actions
-import {requestRobots} from '../services/robots/actions';
-import {setSearchField} from '../services/search/actions';
+import { requestRobots } from '../services/robots/actions';
+import { setSearchField } from '../services/search/actions';
 
 // reducers
-import {ApplicationState} from '../../store/rootReducer';
-import {IRobotsState} from "../services/robots/reducers";
-import {ISearchState} from '../services/search/reducers';
+import { IApplicationState } from '../../store/rootReducer';
+import { IRobotsState } from '../services/robots/reducers';
+import { ISearchState } from '../services/search/reducers';
 
 const App = () => {
   const dispatch = useDispatch();
-  const {robotsList, error, loading}: IRobotsState = useSelector((state: ApplicationState) => state.robots);
-  const {searchField}: ISearchState = useSelector((state: ApplicationState) => state.search);
+  const { robotsList, error, loading }: IRobotsState = useSelector(
+    (state: IApplicationState) => state.robots
+  );
+  const { searchField }: ISearchState = useSelector((state: IApplicationState) => state.search);
   const [searchResult, setSearchResults] = useState<IRobot[]>([]);
 
-  const onChangeHandler = useCallback((text: string) => {
-    dispatch(setSearchField(text));
-  }, [dispatch]);
+  const onChangeHandler = useCallback(
+    (text: string) => {
+      dispatch(setSearchField(text));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     dispatch(requestRobots());
@@ -38,28 +43,33 @@ const App = () => {
 
   useEffect(() => {
     const results = robotsList.filter(
-      (robot: IRobot) => robot.name.toLowerCase().search(searchField.toLowerCase()) > -1);
-    setSearchResults(results)
-  }, [robotsList]);
+      (robot: IRobot) => robot.name.toLowerCase().search(searchField.toLowerCase()) > -1
+    );
+    setSearchResults(results);
+  }, [robotsList, searchField]);
 
   if (loading) {
-    return <Spinner />
+    return <Spinner />;
   }
 
   return (
     <div className="tc">
       <Header />
-      <SearchBox onChangeHandler={debounce(onChangeHandler, 500)}/>
+      <SearchBox onChangeHandler={debounce(onChangeHandler, 500)} />
       {error && <div className="red">{error}</div>}
-      {robotsList && robotsList.length > 0 &&
-      <Scroll>
-        <ErrorBoundary>
-          { searchField === '' ? <CardList robots={robotsList} /> : <CardList robots={searchResult} /> }
-        </ErrorBoundary>
-      </Scroll>
-      }
+      {robotsList && robotsList.length > 0 && (
+        <Scroll>
+          <ErrorBoundary>
+            {searchField === '' ? (
+              <CardList robots={robotsList} />
+            ) : (
+              <CardList robots={searchResult} />
+            )}
+          </ErrorBoundary>
+        </Scroll>
+      )}
     </div>
-  )
+  );
 };
 
 export default App;

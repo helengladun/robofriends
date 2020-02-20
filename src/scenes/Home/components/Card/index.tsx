@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 // interfaces
 import {IRobot} from '../../../models/IRobot';

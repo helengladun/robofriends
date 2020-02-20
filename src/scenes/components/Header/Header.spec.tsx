@@ -4,6 +4,6 @@ import Header from './index';
 
 describe('Header component', () => {
   it('render Header component correctly', () => {
-    expect(shallow(<Header />)).toMatchSnapshot()
+    expect(shallow(<Header />)).toMatchSnapshot();
   });
 });

@@ -16,5 +16,5 @@ const SearchBox = ({onChangeHandler}: IProps) => (
   </div>
 );
 
-export default SearchBox
+export default SearchBox;
 SearchBox.whyDidYouRender = true;

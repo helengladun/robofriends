@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Spinner = () => (
   <div className="full-screen flex justify-center items-center">
@@ -12,6 +12,6 @@ const Spinner = () => (
   </div>
 );
 
-export default React.memo(Spinner)
+export default React.memo(Spinner);
 
 Spinner.whyDidYouRender = true;

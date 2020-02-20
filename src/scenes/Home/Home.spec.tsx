@@ -62,7 +62,7 @@ describe('App component', () => {
   });
 
   it('useEffect in App', () => {
-    (useSelector as jest.Mock<{robotsList: IRobot[], searchField: string}>).mockImplementation(() => ({
+    (useSelector as jest.Mock<{robotsList: IRobot[]; searchField: string}>).mockImplementation(() => ({
       robotsList: robotsMock,
       searchField: 'use'
     }));
@@ -83,5 +83,5 @@ describe('App component', () => {
 
     const component = shallow(<Home />);
     expect(component.find('div.red').exists()).toBeTruthy();
-  })
+  });
 });

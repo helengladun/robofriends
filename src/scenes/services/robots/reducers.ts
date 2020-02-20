@@ -1,10 +1,10 @@
-import { AnyAction, Reducer } from "redux";
+import { AnyAction, Reducer } from 'redux';
 
 // types
-import { RobotsTypes } from "./types";
+import { RobotsTypes } from './types';
 
 // interfaces
-import {IRobot} from "../../models/IRobot";
+import { IRobot } from '../../models/IRobot';
 
 export interface IRobotsState {
   robotsList: IRobot[],
@@ -18,8 +18,11 @@ const initialState: IRobotsState = {
   error: ''
 };
 
-export const reducer: Reducer<IRobotsState> = (state: IRobotsState = initialState, action: AnyAction) => {
-  switch(action.type) {
+export const reducer: Reducer<IRobotsState> = (
+  state: IRobotsState = initialState,
+  action: AnyAction
+) => {
+  switch (action.type) {
     case RobotsTypes.REQUEST_ROBOTS:
       return {
         ...state,
@@ -40,5 +43,4 @@ export const reducer: Reducer<IRobotsState> = (state: IRobotsState = initialStat
     default:
       return state;
   }
-
 };

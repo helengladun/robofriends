@@ -1,13 +1,13 @@
-import { takeEvery, call, all, put } from 'redux-saga/effects'
+import { takeEvery, call, all, put } from 'redux-saga/effects';
 
 // actions
-import {requestRobotsSuccess, requestRobotsFailed} from "./actions";
+import { requestRobotsSuccess, requestRobotsFailed } from './actions';
 
 // services
-import {Robot} from '../api/Robot';
+import { Robot } from '../api/Robot';
 
 // types
-import {RobotsTypes} from "./types";
+import { RobotsTypes } from './types';
 
 export function* getRobotsSaga() {
   try {
@@ -18,12 +18,10 @@ export function* getRobotsSaga() {
   }
 }
 
-function* watchGetRobotAsync() {
-  yield takeEvery(RobotsTypes.REQUEST_ROBOTS, getRobotsSaga)
+export function* watchGetRobotAsync() {
+  yield takeEvery(RobotsTypes.REQUEST_ROBOTS, getRobotsSaga);
 }
 
 export default function* rootSaga() {
-  yield all([
-    watchGetRobotAsync()
-  ])
+  yield all([watchGetRobotAsync()]);
 }

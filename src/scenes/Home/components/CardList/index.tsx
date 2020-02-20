@@ -1,7 +1,7 @@
 import React from 'react';
 
 // components
-import Card from "../Card/index";
+import Card from '../Card/index';
 
 // interfaces
 import {IRobot} from '../../../models/IRobot';

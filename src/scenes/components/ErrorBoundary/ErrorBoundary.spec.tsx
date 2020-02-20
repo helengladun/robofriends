@@ -4,6 +4,7 @@ import ErrorBoundary from './index';
 
 describe('ErrorBoundary component', () => {
   it('render ErrorBoundary component correctly', () => {
-    expect(shallow(<ErrorBoundary />)).toMatchSnapshot()
+    const children = <div>Children nodes</div>;
+    expect(shallow(<ErrorBoundary>{children}</ErrorBoundary>)).toMatchSnapshot();
   });
 });

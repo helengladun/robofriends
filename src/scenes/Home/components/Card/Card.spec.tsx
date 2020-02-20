@@ -10,6 +10,6 @@ describe('Card component', () => {
   };
 
   it('render Card component correctly', () => {
-    expect(shallow(<Card data={data} />)).toMatchSnapshot()
+    expect(shallow(<Card data={data} />)).toMatchSnapshot();
   });
 });

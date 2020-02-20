@@ -1,15 +1,14 @@
 import { createStore, applyMiddleware, Store } from 'redux';
-import createSagaMiddleware from 'redux-saga'
+import createSagaMiddleware from 'redux-saga';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-import {ApplicationState, rootReducer} from './rootReducer';
-import {createLogger} from "redux-logger";
-import rootSaga from "../scenes/services/robots/saga";
+import { IApplicationState, rootReducer } from './rootReducer';
+import rootSaga from '../scenes/services/robots/saga';
 
-export function configureStore(): Store<ApplicationState> {
+export function configureStore(): Store<IApplicationState> {
   const sagaMiddleware = createSagaMiddleware();
-  const logger = createLogger();
 
-  const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+  const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
 
   sagaMiddleware.run(rootSaga);
 

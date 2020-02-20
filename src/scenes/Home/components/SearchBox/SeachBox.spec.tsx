@@ -7,13 +7,13 @@ describe('SearchBox component', () => {
   const component = shallow(<SearchBox onChangeHandler={onChangeHandler}/>);
 
   it('render SearchBox component correctly', () => {
-    expect(component).toMatchSnapshot()
+    expect(component).toMatchSnapshot();
   });
 
   it('call onChangeHandler', () => {
     const text = 'search value';
     const event = {target: {value: text}};
     component.find('input').simulate('change', event);
-    expect(onChangeHandler).toHaveBeenCalledWith(text)
+    expect(onChangeHandler).toHaveBeenCalledWith(text);
   });
 });

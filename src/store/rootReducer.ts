@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
-import {IRobotsState, reducer as robotsReducer} from "../scenes/services/robots/reducers";
-import {ISearchState, reducer as SearchReducer} from "../scenes/services/search/reducers";
+import { IRobotsState, reducer as robotsReducer } from '../scenes/services/robots/reducers';
+import { ISearchState, reducer as SearchReducer } from '../scenes/services/search/reducers';
 
-export interface ApplicationState {
+export interface IApplicationState {
   robots: IRobotsState,
   search: ISearchState
 }
 
-export const rootReducer = combineReducers<ApplicationState>({robots: robotsReducer, search: SearchReducer});
+export const rootReducer = combineReducers<IApplicationState>({ robots: robotsReducer, search: SearchReducer });

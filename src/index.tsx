@@ -2,28 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import 'tachyons';
+import whyDidYouRender from '@welldone-software/why-did-you-render';
 
 // components
-import App from './App'
+import App from './App';
 
 // styles
-import "./index.scss";
+import './index.scss';
 
 // utils
-import registerServiceWorker from './registerServiceWorker'
+import registerServiceWorker from './registerServiceWorker';
 
 // store
-import {configureStore} from "./store";
+import { configureStore } from './store';
 
 const store = configureStore();
 
-const whyDidYouRender = require('@welldone-software/why-did-you-render');
 whyDidYouRender(React);
 
 ReactDOM.render(
   <Provider store={store}>
     <div className="full-screen">
-      <App />
+      <App/>
     </div>
   </Provider>,
   document.getElementById('root'));

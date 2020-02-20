@@ -1,8 +1,8 @@
 // types
-import { RobotsTypes } from "./types";
+import { RobotsTypes } from './types';
 
-//interfaces
-import {IRobot} from "../../models/IRobot";
+// interfaces
+import { IRobot } from '../../models/IRobot';
 
 export const requestRobots = () => ({
   type: RobotsTypes.REQUEST_ROBOTS
@@ -21,4 +21,3 @@ export const requestRobotsFailed = (error: string) => ({
     error
   }
 });
-

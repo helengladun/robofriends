@@ -7,6 +7,6 @@ describe('Scroll component', () => {
   const component = shallow(<Scroll>{children}</Scroll>);
   it('render Scroll component correctly', () => {
     expect(component).toMatchSnapshot();
-    expect(component.find('div.scroll').children().text()).toBe('Children')
+    expect(component.find('div.scroll').children().text()).toBe('Children');
   });
 });
