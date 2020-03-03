@@ -7,7 +7,7 @@ exports[`SearchBox component render SearchBox component correctly 1`] = `
   <input
     aria-label="search robots"
     className="pa3 ba b--green bg-lightest-blue"
-    onChange={[Function]}
+    onChange={[MockFunction]}
     placeholder="search robots"
     type="search"
   />

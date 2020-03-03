@@ -1,17 +1,17 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 interface IProps {
-    onChangeHandler: Function
+  onChangeHandler(event: React.SyntheticEvent<HTMLInputElement>): void
 }
 
-const SearchBox = ({onChangeHandler}: IProps) => (
+const SearchBox = ({ onChangeHandler }: IProps) => (
   <div className="pa2">
     <input
       aria-label="search robots"
       className="pa3 ba b--green bg-lightest-blue"
       type="search"
       placeholder="search robots"
-      onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeHandler(event.target.value)}
+      onChange={onChangeHandler}
     />
   </div>
 );

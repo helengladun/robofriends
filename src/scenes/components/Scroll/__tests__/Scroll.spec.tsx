@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Scroll from './index';
+import Scroll from '../index';
 
 describe('Scroll component', () => {
   const children = <div>Children</div>;

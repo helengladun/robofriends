@@ -2,11 +2,11 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import {useSelector} from 'react-redux';
 
-import Home from './index';
+import Home from '../index';
 
-import {IRobot} from '../models/IRobot';
+import {IRobot} from '../../models/IRobot';
 
-import {RobotsTypes} from '../services/robots/types';
+import {RobotsTypes} from '../../services/robots/types';
 
 const mockDispatch = jest.fn();
 

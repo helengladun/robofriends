@@ -30,11 +30,16 @@ const App = () => {
   const { searchField }: ISearchState = useSelector((state: IApplicationState) => state.search);
   const [searchResult, setSearchResults] = useState<IRobot[]>([]);
 
+  const debouncedChange = debounce(value => {
+    dispatch(setSearchField(value));
+  }, 500);
+
   const onChangeHandler = useCallback(
-    (text: string) => {
-      dispatch(setSearchField(text));
+    (event: React.SyntheticEvent<HTMLInputElement>): void => {
+      event.persist();
+      debouncedChange(event.currentTarget.value);
     },
-    [dispatch]
+    [debouncedChange]
   );
 
   useEffect(() => {
@@ -55,7 +60,7 @@ const App = () => {
   return (
     <div className="tc">
       <Header />
-      <SearchBox onChangeHandler={debounce(onChangeHandler, 500)} />
+      <SearchBox onChangeHandler={onChangeHandler} />
       {error && <div className="red">{error}</div>}
       {robotsList && robotsList.length > 0 && (
         <Scroll>

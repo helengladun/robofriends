@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SearchBox from './index';
+import SearchBox from '../index';
 
 describe('SearchBox component', () => {
   const onChangeHandler = jest.fn();
@@ -14,6 +14,6 @@ describe('SearchBox component', () => {
     const text = 'search value';
     const event = {target: {value: text}};
     component.find('input').simulate('change', event);
-    expect(onChangeHandler).toHaveBeenCalledWith(text);
+    expect(onChangeHandler).toHaveBeenCalledWith(event);
   });
 });
