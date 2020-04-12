@@ -59,7 +59,8 @@
     "deploy": "gh-pages -d build",
     "lint:es": "eslint . --ext .js,.jsx",
     "lint:ts": "tslint -c ./tslint.json './src/**/*.{ts,tsx}'",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "precommit": "pretty-quick --staged"
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
