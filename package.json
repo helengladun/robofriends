@@ -61,6 +61,11 @@
     "lint:ts": "tslint -c ./tslint.json './src/**/*.{ts,tsx}'",
     "test": "react-scripts test"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
   },

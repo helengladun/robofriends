@@ -24,6 +24,7 @@ import { ISearchState } from '../services/search/reducers';
 
 const App = () => {
   const dispatch = useDispatch();
+
   const { robotsList, error, loading }: IRobotsState = useSelector(
     (state: IApplicationState) => state.robots
   );
